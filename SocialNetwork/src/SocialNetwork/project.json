@@ -12,7 +12,10 @@
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "SocialNetwork.Data.Infrastructure": "1.0.0-*",
     "SocialNetwork.Security.Infrastructure": "1.0.0-*",
-    "SocialNetwork.Security.Contracts": "1.0.0-*"
+    "SocialNetwork.Security.Contracts": "1.0.0-*",
+    "Autofac.Extensions.DependencyInjection": "4.0.0",
+    "SocialNetwork.Business.Infrastructure": "1.0.0-*",
+    "SocialNetwork.Business.Contracts": "1.0.0-*"
   },
 
   "tools": {

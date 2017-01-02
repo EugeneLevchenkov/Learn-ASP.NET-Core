@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Newtonsoft.Json.Serialization;
 using SocialNetwork.Data.Infrastructure;
 using SocialNetwork.Security.Contracts.Entities;
 using SocialNetwork.Security.Infrastructure;
+using System;
 
 namespace SocialNetwork.Infrastructure
 {
@@ -27,10 +29,16 @@ namespace SocialNetwork.Infrastructure
         public IConfigurationRoot Configuration
         {
             get;
-            set;
+            private set;
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IContainer ApplicationContainer
+        {
+            get;
+            private set;
+        }
+
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             //services.AddSingleton<IConfigurationRoot>(Configuration);
 
@@ -39,15 +47,21 @@ namespace SocialNetwork.Infrastructure
                 .AddDbContext<SocialNetworkDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SocialNetworkConnection"]))
                 .AddDbContext<SecurityDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SecurityConnection"]));
 
-            services.AddIdentity<User, IdentityRole>()
+            services
+                .AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<SecurityDatabaseContext>();
 
             services
                 .AddMvc()
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
+            services
+                .AddAutofac(container => ApplicationContainer = container);
+
+            return ApplicationContainer.Resolve<IServiceProvider>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
         {
             loggerFactory.AddConsole();
 
@@ -64,6 +78,8 @@ namespace SocialNetwork.Infrastructure
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            appLifetime.ApplicationStopped.Register(() => ApplicationContainer.Dispose());
         }
     }
 }
