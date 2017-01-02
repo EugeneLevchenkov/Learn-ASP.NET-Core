@@ -1,4 +1,6 @@
-﻿namespace SocialNetwork.Data.Contracts.Entities
+﻿using System.Collections.Generic;
+
+namespace SocialNetwork.Data.Contracts.Entities
 {
     public class Post : BaseEntity
     {
@@ -15,6 +17,12 @@
         }
 
         public virtual UserProfile Author
+        {
+            get;
+            set;
+        }
+
+        public virtual IEnumerable<Comment> Comments
         {
             get;
             set;

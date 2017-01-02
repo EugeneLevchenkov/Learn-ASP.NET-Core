@@ -9,5 +9,5 @@ namespace SocialNetwork.Security.Infrastructure
         public SecurityDatabaseContext(DbContextOptions<SecurityDatabaseContext> options) : base(options)
         {
         }
-    }
+    }    
 }

@@ -8,39 +8,14 @@ using SocialNetwork.Data.Infrastructure;
 namespace SocialNetwork.Data.Infrastructure.Migrations
 {
     [DbContext(typeof(SocialNetworkDatabaseContext))]
-    partial class SocialNetworkDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20170102175114_AddUserIdToUserProfile")]
+    partial class AddUserIdToUserProfile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("SocialNetwork.Data.Contracts.Entities.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AuthorId");
-
-                    b.Property<string>("Content");
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<int>("PostId");
-
-                    b.Property<DateTime>("Updated");
-
-                    b.Property<long>("Version");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("PostId");
-
-                    b.ToTable("Comment");
-                });
 
             modelBuilder.Entity("SocialNetwork.Data.Contracts.Entities.Post", b =>
                 {
@@ -84,19 +59,6 @@ namespace SocialNetwork.Data.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UserProfiles");
-                });
-
-            modelBuilder.Entity("SocialNetwork.Data.Contracts.Entities.Comment", b =>
-                {
-                    b.HasOne("SocialNetwork.Data.Contracts.Entities.UserProfile", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SocialNetwork.Data.Contracts.Entities.Post", "Post")
-                        .WithMany("Comments")
-                        .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SocialNetwork.Data.Contracts.Entities.Post", b =>

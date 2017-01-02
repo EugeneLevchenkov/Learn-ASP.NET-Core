@@ -4,5 +4,5 @@ namespace SocialNetwork.Security.Contracts.Entities
 {
     public class User : IdentityUser
     {
-    }
+    }    
 }

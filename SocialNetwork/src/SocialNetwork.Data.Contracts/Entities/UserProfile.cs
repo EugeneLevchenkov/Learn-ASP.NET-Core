@@ -4,6 +4,12 @@ namespace SocialNetwork.Data.Contracts.Entities
 {
     public class UserProfile : BaseEntity
     {
+        public string UserId
+        {
+            get;
+            set;
+        }
+
         public string FirstName
         {
             get;
