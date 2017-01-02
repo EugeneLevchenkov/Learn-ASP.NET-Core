@@ -10,7 +10,9 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.2",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "SocialNetwork.Data.Infrastructure": "1.0.0-*"
+    "SocialNetwork.Data.Infrastructure": "1.0.0-*",
+    "SocialNetwork.Security.Infrastructure": "1.0.0-*",
+    "SocialNetwork.Security.Contracts": "1.0.0-*"
   },
 
   "tools": {

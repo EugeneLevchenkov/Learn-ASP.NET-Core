@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using SocialNetwork.Data.Infrastructure;
+using SocialNetwork.Security.Contracts.Entities;
+using SocialNetwork.Security.Infrastructure;
 
 namespace SocialNetwork.Infrastructure
 {
@@ -29,15 +32,19 @@ namespace SocialNetwork.Infrastructure
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddMvc()
-                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
-
             //services.AddSingleton<IConfigurationRoot>(Configuration);
 
             services
                 .AddEntityFramework()
-                .AddDbContext<SocialNetworkDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SocialNetworkConnection"]));
+                .AddDbContext<SocialNetworkDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SocialNetworkConnection"]))
+                .AddDbContext<SecurityDatabaseContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:SecurityConnection"]));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<SecurityDatabaseContext>();
+
+            services
+                .AddMvc()
+                .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -48,6 +55,8 @@ namespace SocialNetwork.Infrastructure
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {
