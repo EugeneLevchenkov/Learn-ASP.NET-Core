@@ -16,5 +16,13 @@
     "inputFiles": [
       "wwwroot/lib/jquery/jquery-1.9.1.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/css/site.css",
+    "inputFiles": [
+      "wwwroot/Styles/site.css",
+      "wwwroot/Styles/navigation.css",
+      "wwwroot/Styles/common.css"
+    ]
   }
 ]
