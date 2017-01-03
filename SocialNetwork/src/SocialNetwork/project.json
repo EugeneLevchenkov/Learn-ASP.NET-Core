@@ -15,8 +15,8 @@
     "SocialNetwork.Security.Contracts": "1.0.0-*",
     "Autofac.Extensions.DependencyInjection": "4.0.0",
     "SocialNetwork.Business.Infrastructure": "1.0.0-*",
-    "SocialNetwork.Business.Contracts": "1.0.0-*"
-  },
+    "SocialNetwork.Business.Contracts": "1.0.0-*",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

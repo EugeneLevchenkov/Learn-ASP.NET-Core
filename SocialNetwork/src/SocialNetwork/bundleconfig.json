@@ -1,0 +1,20 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/bundles/css/bootstrap.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/css/bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/js/bootstrap.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/js/bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/bundles/js/jquery.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery-1.9.1.js"
+    ]
+  }
+]

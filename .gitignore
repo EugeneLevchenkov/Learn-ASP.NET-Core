@@ -250,3 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+SocialNetwork/src/SocialNetwork/wwwroot/bundles/*

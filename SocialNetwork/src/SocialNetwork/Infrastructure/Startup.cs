@@ -70,6 +70,8 @@ namespace SocialNetwork.Infrastructure
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseIdentity();
 
             app.UseMvc(routes =>
