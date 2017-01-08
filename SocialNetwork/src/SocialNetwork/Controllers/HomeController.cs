@@ -5,29 +5,21 @@ using SocialNetwork.Core.Services;
 
 namespace SocialNetwork.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private IUserProfileService profileService;
-        private IUserMetadataService userMetadataService;
 
 
-        public HomeController(IUserProfileService profileService, IUserMetadataService userMetadataService)
+        public HomeController(IUserProfileService profileService, IUserMetadataService userMetadataService) : base(userMetadataService)
         {
             this.profileService = profileService;
-            this.userMetadataService = userMetadataService;
         } 
-
         
+        [Authorize]
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var metadata = userMetadataService.GetUserMetadata(User);
-                var viewModel = profileService.GetViewModel(metadata.UserProfile.Id);
-                return View(viewModel);
-            }
-
-            return RedirectToAction("Login", "Account");
+            var viewModel = profileService.GetViewModel(UserMetadata.UserProfile.Id);
+            return View(viewModel);
         }
     }
 }
