@@ -1,11 +1,13 @@
-﻿<div class="comment">
+﻿@model SocialNetwork.Business.Contracts.ViewModels.CommentViewModel
+
+<div class="comment">
     <div class="inline-block">
         <img src="~/Pictures/CommentImage.png" alt="Comment Phote">
     </div>
-    <div class="comment-content inline-block">Comments</div>
+    <div class="comment-content inline-block">@Model.Content</div>
     <div class="manage-post pull-right">
-        <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+        <a asp-controller="Comment" asp-action="Edit" asp-route-id="@Model.Id"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a asp-controller="Comment" asp-action="Delete" asp-route-id="@Model.Id"><span class="glyphicon glyphicon-remove"></span></a>
     </div>
 </div>
 <hr />

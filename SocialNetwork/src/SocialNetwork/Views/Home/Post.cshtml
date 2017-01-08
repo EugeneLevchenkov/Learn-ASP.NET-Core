@@ -1,15 +1,16 @@
-﻿<div class="row post">
+﻿@model SocialNetwork.Business.Contracts.ViewModels.PostViewModel
+<div class="row post">
     <div class="inline-block">
         <img src="~/Pictures/CommentImage.png" alt="Comment Phote">
     </div>
-    <div class="post-content inline-block">Post #1</div>
+    <div class="post-content inline-block">@Model.Content</div>
     <div class="manage-post pull-right">
-        <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+        <a asp-controller="Post" asp-action="Edit" asp-route-id="@Model.Id"><span class="glyphicon glyphicon-pencil"></span></a>
+        <a asp-controller="Post" asp-action="Delete" asp-route-id="@Model.Id"><span class="glyphicon glyphicon-remove"></span></a>
     </div>
     <hr />
-    @Html.Partial("Comments")
+    @Html.Partial("Comments", Model.Comments)
     <div class="add-comment pull-right">
-        <a href="#">Add Comment</a>
+        <a asp-controller="Comment" asp-action="Create" asp-route-postId="@Model.Id">Add Comment</a>
     </div>
 </div>   

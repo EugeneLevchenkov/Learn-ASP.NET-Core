@@ -1,14 +1,16 @@
-﻿@{
+﻿@model SocialNetwork.Business.Contracts.ViewModels.ProfileViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="row">
         <div class="col-md-3 width-inherit">
-            @Html.Partial("Profile")
+            @Html.Partial("Profile", Model)
         </div>
         <div class="col-md-9">
-            @Html.Partial("Posts")    
+            @Html.Partial("Posts", Model.Posts)    
         </div>
     </div>
 </div>

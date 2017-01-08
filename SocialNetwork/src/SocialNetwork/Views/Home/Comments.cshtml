@@ -1,6 +1,8 @@
-﻿<div class="comments">
-    @foreach (var item in Enumerable.Range(1,3))
+﻿@model IEnumerable<SocialNetwork.Business.Contracts.ViewModels.CommentViewModel>
+
+<div class="comments">
+    @foreach (var comment in Model)
     {
-        @Html.Partial("Comment")
+        @Html.Partial("Comment", comment)
     }
 </div>

@@ -1,6 +1,15 @@
-﻿<div class="posts">
-    @foreach (var item in Enumerable.Range(1, 5))
+﻿@model IEnumerable<SocialNetwork.Business.Contracts.ViewModels.PostViewModel>
+
+<div class="posts">
+    @if (Model == null || Model.Count() == 0)
     {
-        @Html.Partial("Post")
-    }    
+        <span class="no-data">There is no information that can be displayed here.</span>        
+    }
+    else
+    {
+        @foreach (var post in Model)
+        {
+            @Html.Partial("Post", post)
+        }
+    }
 </div>

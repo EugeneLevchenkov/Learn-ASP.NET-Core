@@ -28,6 +28,8 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SocialNetwork.Business.Serv
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SocialNetwork.Business.Infrastructure", "src\SocialNetwork.Business.Infrastructure\SocialNetwork.Business.Infrastructure.xproj", "{04C2DC88-9572-4C53-AEB5-20180BF5591D}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "SocialNetwork.Common", "src\SocialNetwork.Common\SocialNetwork.Common.xproj", "{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{04C2DC88-9572-4C53-AEB5-20180BF5591D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C2DC88-9572-4C53-AEB5-20180BF5591D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C2DC88-9572-4C53-AEB5-20180BF5591D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 		{D823C548-D804-4E81-A1E8-383C20DFD8BB} = {730FB917-388C-4C84-9340-7A318640C637}
 		{419CAAE1-BE8E-499B-B601-13A1E2EE1C58} = {730FB917-388C-4C84-9340-7A318640C637}
 		{04C2DC88-9572-4C53-AEB5-20180BF5591D} = {730FB917-388C-4C84-9340-7A318640C637}
+		{FACCD9FC-5FA4-4CBE-856C-1DD44D4A9408} = {730FB917-388C-4C84-9340-7A318640C637}
 	EndGlobalSection
 EndGlobal

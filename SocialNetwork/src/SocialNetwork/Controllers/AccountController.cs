@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SocialNetwork.Business.Contracts.ViewModels;
+using SocialNetwork.Business.Contracts;
 using SocialNetwork.Security.Contracts.Entities;
+using SocialNetwork.ViewModels.Security;
 using System.Threading.Tasks;
 
 namespace SocialNetwork.Controllers
@@ -10,11 +11,13 @@ namespace SocialNetwork.Controllers
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        private readonly IUserProfileService userProfileService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IUserProfileService userProfileService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.userProfileService = userProfileService;
         }
 
         [HttpGet]
@@ -33,6 +36,7 @@ namespace SocialNetwork.Controllers
                 var result = await userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await userProfileService.CreateUserProfileAsync(user.Id);
                     await signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }

@@ -3,9 +3,11 @@
 
   "dependencies": {
     "Autofac.Extensions.DependencyInjection": "4.0.0",
+    "AutoMapper": "5.2.0",
     "NETStandard.Library": "1.6.0",
     "SocialNetwork.Business.Contracts": "1.0.0-*",
-    "SocialNetwork.Business.Services": "1.0.0-*"
+    "SocialNetwork.Business.Services": "1.0.0-*",
+    "SocialNetwork.Common": "1.0.0-*"
   },
 
   "frameworks": {

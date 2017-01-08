@@ -1,14 +1,16 @@
-﻿<div class="profile">
+﻿@model SocialNetwork.Business.Contracts.ViewModels.ProfileViewModel
+
+<div class="profile">
     <div class="profile-photo">
         <img src="~/Pictures/ProfileImage.png" alt="Profile Phote" class="img-rounded">
     </div>
     <div>
-        <span>Eugene Levchenkov</span>
+        <span>@Model.FirstName @Model.LastName</span>
     </div>
     <div>
-        <a href="#">Add Post</a>
+        <a asp-controller="Post" asp-action="Create">Add Post</a>
     </div>
     <div>
-        <a href="#">Edit Profile</a>
+        <a asp-controller="Profile" asp-action="Edit">Edit Profile</a>
     </div>
 </div>

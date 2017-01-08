@@ -1,0 +1,24 @@
+﻿@model SocialNetwork.Business.Contracts.ViewModels.EditCommentViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container form-container">
+    <h2>Create Comment</h2>
+    <form method="post" asp-controller="Comment" asp-action="Create">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <input type="hidden" asp-for="PostId" />
+        </div>
+        <div>
+            <label asp-for="Content" ></label><br />
+            <input asp-for="Content"/>
+            <span asp-validation-for="Content"></span>
+        </div>
+        <div>
+            <input type="submit" value="Create" />
+            <a asp-control="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using SocialNetwork.Core.Services;
 
 namespace SocialNetwork.Infrastructure
 {
@@ -6,6 +7,7 @@ namespace SocialNetwork.Infrastructure
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<UserMetadataService>().As<IUserMetadataService>();
         }
     }
 }

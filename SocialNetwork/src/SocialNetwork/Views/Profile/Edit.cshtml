@@ -1,0 +1,26 @@
+﻿@model SocialNetwork.Business.Contracts.ViewModels.EditProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container form-container">
+    <h2>Edit Profile</h2>
+    <form method="post" asp-controller="Profile" asp-action="Edit">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="FirstName"></label><br />
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div>
+            <label asp-for="LastName"></label><br />
+            <input asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+            <a asp-control="Home" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
